@@ -44,6 +44,9 @@ public class UtilisateurTab {
         if (!nomNettoye.matches("[A-Za-zÀ-ÖØ-öø-ÿ' -]{2,}")) {
             throw new IllegalArgumentException("Le nom contient des caractères invalides ou est trop court.");
         }
+        if (!emailNettoye.matches(REGEX_EMAIL)) {
+            throw new IllegalArgumentException("Format d'email invalide.");
+        }
 
         this.prenom = prenomNettoye;
         this.nom = nomNettoye;
@@ -59,9 +62,17 @@ public class UtilisateurTab {
         return email.matches(REGEX_EMAIL);
     }
 
-    public String getPrenom() { return prenom; }
-    public String getNom() { return nom; }
-    public String getEmail() { return email; }
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public String getEmail() {
+        return email;
+    }
 
     @Override
     public String toString() {
